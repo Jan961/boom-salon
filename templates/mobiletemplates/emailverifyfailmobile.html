@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends 'mobiletemplates/basemobile.html' %}
+{% load static %}
+
+{% block title %}
+    Email-verify-fail-mobile
+{% endblock %}
+
+{% block content %}
+
+	<div class="container p-5">
+  	 	<h2 class="font-weight-bold mt-3">Email Verification Link Error</h2>
+
+		<p>This link may be invalid/expired, please request a new one using the login tab.</p>
+        <a class="basic_link" href="{% url 'home:home' %}">Login</a>
+
+  	</div>
+
+{% endblock %}

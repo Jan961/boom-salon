@@ -1,0 +1,70 @@
+{% extends 'mobiletemplates/basemobile.html' %}
+{% load static %}
+
+{% block title %}
+    Sign up
+{% endblock %}
+
+{% block content %}
+
+<div class="menuwrapper">
+
+
+
+    <div id="membershipinfo">
+        <p>
+{#            Break instead of using padding or margin in the css file because - the max-height property doesn't include #}
+{#            them - faulty accordion menu#}
+            <br>
+            Check you account details, your subscription or view your saved magazine issues below.
+            <br>
+        </p>
+    </div>
+
+    <div class="menuelement">
+        <img class="closeicondummy" src="{% static 'icon/close.svg' %}">
+        <a > My Profile </a>
+        <img class="closeicon" src="{% static 'icon/close.svg' %}">
+
+    </div>
+
+    <div class="hiddenpanel">
+        <div> {% include "mobiletemplates/myprofilemobile.html" %}</div>
+    </div>
+
+
+    <div class="menuelement">
+        <img class="closeicondummy" src="{% static 'icon/close.svg' %}">
+            <a > My Subscription </a>
+        <img class="closeicon" src="{% static 'icon/close.svg' %}">
+
+    </div>
+
+    <div class="hiddenpanel">
+        <div> {% include "mobiletemplates/mysubscriptionmobile.html" %}</div>
+    </div>
+
+
+    <div class="menuelement">
+        <img class="closeicondummy" src="{% static 'icon/close.svg' %}">
+        <a > My Magazines </a>
+        <img class="closeicon" src="{% static 'icon/close.svg' %}">
+
+    </div>
+
+    <div class="hiddenpanel">
+        <div>{% include "mobiletemplates/mymagazinesmobile.html" %}</div>
+    </div>
+
+    <div class="backbutton">
+        <a class="basic_link" href="{% url 'home:home' %}">Back</a>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'scripts/home.js' %}"></script>
+    <script src="{% static 'scripts/membershipmobile.js' %}"></script>
+{% endblock %}

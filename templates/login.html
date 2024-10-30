@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+
+<link rel="stylesheet" type="text/css" href="/static/styles/login.css">
+{% endblock %}
+
+{% block title %}
+Log In
+{% endblock %}
+
+<!--see navbar.html for navbar code-->
+{% block navbar %}
+{% include "navbar.html" %}
+{% endblock %}
+
+
+{% block content %}
+    {% include "loginform.html" %}
+{% endblock %}
+
+
+<script src="{% static 'scripts/home.js' %}"></script>

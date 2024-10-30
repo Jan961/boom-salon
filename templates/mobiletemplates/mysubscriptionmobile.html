@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+
+    <div id="subscription_wrap_top">
+
+        {% if not curr_user.email_confirmed %}
+        <div><label style="color:red">Email verification is required before purchasing a subscription</label></div>
+        {% elif not curr_user.is_subscribed %}
+        <div><label style="font-weight: bold">Not Subscribed</label></div>
+        {% endif %}
+    </div>
+
+    <div id="membership_wrap_bottom">
+
+				<div >
+				{% if user.is_authenticated %}
+                    <div>Your Plan:</div>
+                {% elif subscribed == False %}
+                    <div>Upgrade:</div>
+				{% else %}
+					<div>Get a free account</div>
+                {% endif %}
+                </div>
+
+	  			<div id="subscription_text">
+	  				<p>Lorem ipsum dolor sit amet, consectetuer adipscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quiz nostrud exerci tation.</p>
+
+	  				Lorem ipsum dolor sit amet, consectetuer adipscing elit, sed diam nonummy nibh euismod tincidunt ut
+	  				Ut wisi enim ad minim veniam, quiz nostrud exerci tation.
+	  				Duis autem vel eum iriure dolor in hendererit in vuputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.
+	  				Vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatun zzril delenit augue duis dolore te feugait nulla facilisi.
+
+	  				<br />
+                </div>
+
+                <div>
+	  				{% if user.is_authenticated %}
+	  					{% if subscribed == False %}
+	  					{% if codes != 0 %}
+
+                            <p>Subscribe using PayPal</p>
+
+
+                            <p>{{ form.render }} </p>
+
+
+	  					{% else %}
+
+							<p> Try again next month. </p>
+
+						{% endif %}
+						{% else %}
+						<h4>Subscription:</h4>
+						<div style="; text-align: center;bottom:0;left:auto;margin-top:auto;">
+
+                            <p>Activated: {{ date_subscribed }} </p>
+                            <p>Valid until: {{ date_valid }} </p>
+						</div>
+	  					{% endif %}
+
+
+	  				{% else %}
+
+	  					<a href="{% url 'home:signup' %}" class="btn btn-primary">
+	  					Sign up
+	  					</a>
+
+	  				{% endif %}
+
+	  			</div>
+
+
+		{% if not subscribed  %}
+
+
+
+		<div >
+
+		<h6 style="font-weight: bold"> {{ countdown }}</h6>
+
+
+		</div>
+		{% endif %}
+
+    </div>
+
+

@@ -1,0 +1,112 @@
+{% extends 'mobiletemplates/basemobile.html' %}
+{% load static %}
+
+
+
+{% block title %}
+{{this.title}}
+{% endblock %}
+
+
+{% block content %}
+
+
+
+    <img class="cover_image" src="{{ latest_issue.cover.url }}" />
+
+    <div id="magazine_title">
+        {{ this.title }}
+    </div>
+
+
+
+    <div class="mag_and_issue_line"></div>
+
+    <div id="magazine_wrap" class="mag_or_issue_wrap">
+        <div class="hashtags">
+            {% for hashtag in this.hashtag_set.all %}
+            {{ hashtag }}, &#160
+            {% endfor %}
+        </div>
+
+        <div class="mag_and_issue_description">
+            <p>{{ this.description_short }}</p>
+
+{#            Magazine's website:#}
+{#            <a> {{ this.link_to_publishers_site }} </a>#}
+
+        </div>
+        <div id="latest_issue">
+            <p>Latest Issue:</p>
+            <a href="{% url 'home:issue' this.id latest_issue.slug %}" class="basic_link">
+               {{ latest_issue.title }}
+            </a>
+        </div>
+
+        <div class="buy_buttons">
+            {% if subscribed %}
+                <a href="{{this.link_to_publishers_site}}" onclick="alert('Please go to the Membership area to' +
+                 ' recieve your subscriber code if you have not already')" type="button" class="left_button" >
+                    Subscriber Price &#163
+                    {{latest_issue.discounted_price}}</a>
+
+                <a href="{{this.link_to_publishers_site}}" type="button" class="right_button">
+                    <strike>Full Price &#163 {{latest_issue.price}}</strike></a>
+
+            {% else %}
+                <a href="{% url 'home:myprofile' %}" type="button" class="left_button" >
+                    Subscriber Price &#163 {{latest_issue.discounted_price}}</a>
+                <a href="{{this.link_to_publishers_site}}" type="button" class="right_button">
+                    Full Price &#163 {{latest_issue.price}}</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div id="magazine_menu_wrap">
+        <div class="menuelement " id="magazine_menu_element" >
+            <img class="closeicondummy" src="{% static 'icon/close.svg' %}">
+            <a> All Issues </a>
+            <img class="closeicon" src="{% static 'icon/close.svg' %}">
+
+        </div>
+
+        <div id="hidden_panel_issues">
+
+            {% for issue in issues %}
+                <a class="magazine_or_issue_list_link" href="{% url 'home:issue' this.id issue.slug %} ">
+                <div class="mag_list_element">
+                    <img class="mag_list_cover_image" src="{{ issue.cover.url }}" />
+
+                    <div class="mag_list_text">
+
+                            {{ issue.title }}
+
+
+                        <div class="issue_date">Published: {{ issue.date|date:"j M y" }}</div>
+                    </div>
+
+
+
+                </div>
+                 </a>
+                <div class="mag_list_line"></div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block script %}
+<script>
+    if (window.location.href.slice(-10) != "#Magazines") {
+        window.location.href += "#Magazines";
+    }
+</script>
+
+    <script src="{% static 'scripts/home.js' %}"></script>
+    <script src="{% static 'scripts/magazinemobile.js' %}"></script>
+
+    <script src="{% static 'scripts/home.js' %}" defer></script>
+{% endblock %}

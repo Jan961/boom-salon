@@ -1,0 +1,76 @@
+{% load static %}
+
+<div style="flex-direction:column; height:90vh; overflow:hidden;" class="d-flex justify-content-between sidebar">
+    <div class="accordion d-flex justify-content-center">
+        <div class="accordion-item" id="Magazines">
+            <a class="accordion-link" href="{% url 'home:home' %}#Magazines">
+                All Magazines
+            </a>
+
+            <div class="answer">
+
+                <div id="searchBarDesktopDiv">
+                    <input type="text" id="searchBarDesktop" onkeyup="searchBarFunction()" placeholder="search magazines or topics">
+                </div>
+
+                {% for magazine in magazines %}
+                <div class="card text-center mb-3 border-0 mag-box magazine_list_element_desktop">
+                    <div class="card-body">
+                        <a href="{% url 'home:magazine' magazine.id %}" class="card-title mag-title" id="{{magazine.id}}">{{magazine.title}}</a>
+                        <div class="card-text gry-txt sml-txt">
+                            {% for hashtag in magazine.hashtag_set.all%}
+                               <hashtag_desktop>{{ hashtag }} &#160</hashtag_desktop>
+                            {%  endfor %}
+
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <div class="accordion-item" id="Membership">
+            <a class="accordion-link" href="{% url 'home:membership' %}#Membership">
+                Membership
+            </a>
+
+            {% if user.is_authenticated %}
+            <div class="answer">
+                <div class="mag-box justify-content-center align-items-center">
+                    <a href="{% url 'home:myprofile' %}" class="card-title mem-title" id="mprof">My Profile</a>
+                </div>
+
+                <div class="mag-box justify-content-center align-items-center">
+                    <a href="{% url 'home:mymagazines' %}" class="card-title mem-title" id="mmags">My Magazines</a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="accordion-item" id="Contact">
+            <a class="accordion-link" href="{% url 'home:contact' %}" class="card-title con-title" id="con">
+                Contact
+            </a>
+        </div>
+    </div>
+
+    <div class="login">
+        {% if user.is_authenticated %}
+        <a class="lout" href="{% url 'home:signout' %}">Sign Out</a>
+        {% else %}
+        <a class="lin" href="{% url 'home:login' %}">Log In</a>
+        {% endif %}
+
+        {% if user.is_staff %}
+        <div>
+            <a href="{% url 'home:staff' %}" class="btn btn-outline-secondary btn-sm">
+                Staff Portal
+            </a>
+        </div>
+        {% endif %}
+    </div>
+
+</div>
+
+<script src="{% static 'scripts/searchbardesktop.js' %}"></script>

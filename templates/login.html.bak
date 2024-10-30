@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+
+<link rel="stylesheet" type="text/css" href="/static/styles/login.css">
+{% endblock %}
+
+{% block title %}
+Log In
+{% endblock %}
+
+<!--see navbar.html for navbar code-->
+{% block navbar %}
+{% include "navbar.html" %}
+{% endblock %}
+
+
+{% block content %}
+<<<<<<< HEAD
+<div class="info-box py-0 px-0 mr-0 d-inline">
+			<div class="card-body center">
+			
+			<center>
+			<h3 class="card-title">Log In</h3>
+			
+			<div class="container sml-txt mt-3 d-inline">
+			
+			<form id="login_form" method="post" action="{%url 'home:login' %}">
+				{% csrf_token %}
+				
+
+				
+				<input type="username" name="username" placeholder="Username" required /><br></br>
+				<input type="password" name="password" placeholder="Password" required/><br></br>
+				 </div>
+				 <div class="sml-txt">
+				<input type="submit" value="Enter"/><br></br>
+					 <div class="info xsml-txt gry-txt"><a  href="{% url 'home:password_reset' %}">Forgot Password?</a></div>
+				</div>
+
+				
+			</form>
+			<div class="info sml-txt">
+			
+			Not a member?	<a  href="{% url 'home:signup' %}">Signup</a>
+			</center>
+			</div>
+			</div>
+			
+
+</div>
+<script src="{% static 'scripts/home.js' %}"></script>	
+=======
+    {% include "loginform.html" %}
+>>>>>>> 93b2928f679db33f77f4763f27228e0c3c2a66d8
+{% endblock %}
+
+
+<script src="{% static 'scripts/home.js' %}"></script>

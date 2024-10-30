@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends 'mobiletemplates/basemobile.html' %}
+{% load static %}
+
+{% block title %}
+    Email-verify-success-mobile
+{% endblock %}
+
+{% block content %}
+
+    <div class="container p-5">
+  	 	<h2 class="font-weight-bold mt-3">Email Verified</h2>
+
+        <p>You have successfully verified your Clò email.</p>
+        <a class="basic_link" href="{% url 'home:home' %}"> Login </a>
+
+  	</div>
+
+{% endblock %}

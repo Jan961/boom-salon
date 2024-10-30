@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+{% extends 'mobiletemplates/basemobile.html' %}
+{% load static %}
+{% load myfilter %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="/static/styles/home.css"><link rel="stylesheet" type="text/css" href="/static/styles/membership.css">
+{% endblock %}
+
+{% block title %}
+Payment Done - Mobile
+{% endblock %}
+
+
+{% block content %}
+
+
+<div style="margin-left: 1em; margin-right: 1em; text-align: center">
+    <div >
+        	<div style="margin-top:2em;">
+    <p>Payment was successful. Your discount code will be emailed to you.</p>
+    <a class="basic_link" href="{% url 'home:home' %}"> Return to homepage.</a>
+    </div>
+    </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'mobiletemplates/basemobile.html' %}
+{% load static %}
+
+{% block title %}
+    Sign up
+{% endblock %}
+
+{% block content %}
+
+<div class="basic_form">
+
+			{% if registered %}
+			<p>Thank you for registering!</p>
+			<a href="{% url 'home:home' %}">Return to homepage.</a>
+
+			{% else %}
+			<h3 class="card-title">Sign Up</h3>
+
+
+
+
+			<form id=signup_form" method="post" action="{%url 'home:signup' %}" >
+				{% csrf_token %}
+
+
+					<input type="email" name="email" placeholder="Email" required/>
+
+					<p>{{ form.username.errors.as_text }}</p>
+
+
+
+					<input type="username" name="username" placeholder="Username" required/>
+
+					<p>{{ form.username.errors.as_text }}</p>
+
+
+					<input type="password" name="password" placeholder="Password" required />
+
+					<p>{{ form.password.errors.as_text }}</p>
+
+
+
+					<input type="password" name="confirm_password" placeholder="Repeat Password" required />
+
+					<p>{{ form.confirm_password.errors.as_text }}</p>
+
+
+
+
+
+				<div class="info xsml-txt gry-txt">
+				<input type="checkbox" id="terms" required onchange="this.setCustomValidity(validity.valueMissing ?
+				 'Please accept the Terms and Conditions of use to continue.' : '');" />
+				<p>I accept the Terms and Conditions of use.</p>
+
+
+
+				</div>
+
+				<div class="info sml-txt ">
+				    <input type="submit" name="submit" value="Enter" href="{% url 'home:login' %}" />
+                </div>
+
+			</form>
+
+
+
+			{% endif %}
+
+<script src="{% static 'scripts/signup.js' %}"></script>
+
+</div>
+
+{% endblock %}

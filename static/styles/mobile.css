@@ -1,0 +1,550 @@
+/*General*/
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+*{
+	font-size: 2.5vh;/*  relative to viewpoint's height - so that the app looks good
+	on both vertically and horizontally held mobile devices  */
+}
+
+#mainwrapper{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
+
+}
+
+
+#logo-bar{
+	padding: 0.5em;
+	display: block;
+	top: 0;
+	height: 10%;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 0;
+	border-bottom: solid black;
+	border-bottom-width: thin;
+	z-index: 999;
+}
+
+#logo-image{
+	display: block;
+	height:auto;
+	width:3em;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+.basic_link{
+	text-decoration-line: none !important;
+}
+
+
+
+
+/*basic form e.g. sign up or login*/
+
+.basic_form{
+	width: 100%;
+	text-align: center;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+
+#ask_to_login_after_membership_clicked{
+	display: none;
+
+
+}
+
+/*Login*/
+#login-form{
+	margin-top: 3em;
+}
+
+
+#dont_have_an_account_text{
+	margin-top: 2em;
+}
+
+/*Homepage*/
+
+
+
+.menuwrapper{
+	display: flex;
+	flex-flow: column nowrap;
+	width: 100%;
+	row-gap: 0;
+	border-bottom: solid black;
+	border-width: thin;
+
+}
+
+
+
+
+
+.menutext{
+	text-decoration: none ;
+	color: inherit;
+	text-underline: none ;
+	font-size: 1.4em !important;
+	font-weight: 570;
+
+}
+
+.menuelement a{
+	height: 100%;
+	text-decoration: none ;
+	color: inherit;
+	text-underline: none ;
+	font-size: 1.4em !important;
+	font-weight: 570;
+	size: inherit;
+	transition: 0.4s;
+
+}
+
+
+
+.menuelement{
+
+	width: 100%;
+	border-top-style: solid;
+	border-top-width: thin;
+	border-top-color: black;
+	padding-top: 0.6em;
+	padding-bottom:0.6em;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.closeicon{
+	margin-right: 1.5em;
+	opacity: 0%;
+	transition: opacity 0.1s;
+
+}
+
+.closeicondummy{
+	margin-left: 1.5em;
+	opacity: 0%;
+}
+
+
+.hiddenpanel {
+	max-height: 0;
+  	overflow: hidden;
+  	transition: max-height 0.4s ease-out;
+	text-align: center;
+}
+
+
+
+
+#aboutclo{
+	max-height:initial;
+	padding: 1em;
+	padding-top: 0;
+	padding-bottom: 0;
+	text-align:left;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+
+
+
+
+ input, .btn{
+ 	border: none;
+	width:80%;
+	clear:both;
+	background-color: lightgrey;
+
+
+}
+
+input[type=submit]{
+	width:20%;
+	background-color:rgb(47, 82, 224);
+	color:white;
+	position:center;
+	min-width: max-content;
+}
+/*.all_mags{*/
+/*	text-align: center;*/
+/*}*/
+
+
+
+/*Contact*/
+
+#contact{
+	padding-right: 0.7em;
+	padding-left: 0.7em;
+}
+
+/*Membership menu as a submenu - NOT IN USE  */
+
+/*.membership_element div {*/
+
+/*	width: 100%;*/
+/*	font-size: 1.2em;*/
+/*	margin-top: 0.6em;*/
+/*	margin-bottom: 0.6em;*/
+
+/*	font-weight: 400;*/
+
+/*}*/
+
+/*.membership_hidden_panel{*/
+/*	max-height: 0;*/
+/*  	overflow: hidden;*/
+/*  	transition: max-height 0.4s ease-out;*/
+
+/*}*/
+
+/*#membership_outer_hidden_panel{*/
+/*	margin-bottom: 0em !important;*/
+
+
+
+/*}*/
+
+
+/*.membership_menu_line{*/
+/*	margin: 0;*/
+/*	width: 60%;*/
+/*	margin-left: auto;*/
+/*	margin-right: auto;*/
+/*	opacity: 1;*/
+/*	border: 0;*/
+/*	border-top: 1px solid !important;*/
+/*	z-index: 99;*/
+
+
+/*}*/
+
+
+/*Membership as a separate page*/
+
+.backbutton a{
+	height: 100%;
+	width: 100%;
+	text-decoration: none ;
+	color: rgb(47, 82, 224);
+	text-underline: none ;
+	font-size: 1.4em;
+	font-weight: 570;
+	size: inherit;
+	transition: 0.4s;
+}
+
+
+.backbutton {
+	border-top: solid black;
+	border-top-width: thin;
+	padding-top: 0.6em;
+	padding-bottom: 0.6em;
+	width: 100%;
+	text-align: center;
+}
+
+#membershipinfo{
+	max-height:0;
+	padding: 1em;
+	padding-top: 0;
+	padding-bottom: 0;
+	text-align:center;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+
+}
+
+/*Magazine and issue*/
+
+.cover_image{
+	width: 100%;
+	padding: 1em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#magazine_title{
+	font-weight: 500;
+	width: 100%;
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-bottom: 0.5em;
+	text-align: left;
+	max-height: max-content;
+	font-size: 1em;
+}
+
+.mag_and_issue_line{
+	border-top: black;
+	border-top-style: solid;
+	border-top-width: thin;
+	width: 100%;
+
+}
+
+.mag_or_issue_wrap{
+	padding: 1em;
+	padding-top: 0.5em;
+	width: 100%;
+	font-size: 0.8em;
+}
+
+.hashtags{
+	width: 100%;
+	text-align: center;
+	font-size: 0.8em;
+	color: grey;
+}
+
+.magazine_or_issue_list_link{
+	text-decoration: none;
+	color: unset;
+}
+
+.mag_and_issue_description{
+	text-align: left;
+	margin-top: 0.5em;
+	width: 100%;
+}
+
+.mag_and_issue_description p{
+	text-align: left;
+	margin-top: 0.5em;
+	width: 100%;
+	font-size: 0.8em;
+}
+
+#latest_issue{
+	margin-bottom: 0.5em;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-top: 2em;
+}
+
+
+.buy_buttons{
+	display: flex;
+	width: 100%;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	align-items: center;
+	align-content: space-evenly;
+
+}
+
+.left_button{
+	font-size: 0.9em;
+    color: #fff;
+    background-color: rgb(47, 82, 224);
+	padding: .25em .5em;
+	text-decoration: none;
+	margin-top: 0.5em;
+	border: solid rgb(47, 82, 224);
+	border-width: 0.8px;
+}
+
+
+.right_button{
+	font-size: 0.9em;
+	padding: .25em .5em;
+	border: solid black;
+	border-width: 0.8px;
+	text-decoration: none;
+	color: black;
+	margin-top: 0.5em;
+
+}
+
+#magazine_menu_element{
+
+	padding-left: 0;
+	padding-right: 0;
+	margin-top: 1.5em;
+
+}
+
+#hidden_panel_issues{
+	/*max-height: 0;*/
+  	overflow: hidden;
+  	/*transition: max-height 0.4s ease-out;*/
+}
+
+#magazine_menu_wrap {
+	border-bottom-style: solid;
+	border-bottom-width: thin;
+	border-bottom-color: black;
+	width: 100%;
+
+}
+
+/*All magazines list*/
+
+.mag_list_element_wrap{
+	display: block;
+}
+
+.mag_list_element{
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+}
+.mag_list_cover_image{
+	height: 7em;
+	margin: 1em;
+}
+
+.mag_list_text{
+	margin-top: 1em;
+	margin-right: 1em;
+	width: 100%;
+
+}
+
+
+.mag_list_line{
+	border-top: grey;
+	border-top-style: solid;
+	border-top-width: 2px;
+
+	margin-right: 1em;
+	margin-left: 1em;
+
+}
+#searchBar {
+	text-align: center;
+	border: none;
+	border-radius: 0.2em !important;
+	background-color: lightgrey;
+	margin-bottom: 1em;
+	margin-top: 1em;
+
+}
+/*Issue*/
+
+.issue_title_block{
+	display: flex;
+	justify-content: flex-start;
+	width: 100%;
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-bottom: 0.5em;
+}
+
+#issue_title{
+	font-size: 0.8em;
+}
+
+.issue_title_block .save_issue{
+	height: max-content;
+	max-width: 27%;
+	font-size: 0.6em;
+	margin-left: auto;
+}
+
+.issue_title_block .favourite_mobile{
+	padding: 0.25em;
+	background-color: #E8E5E2;
+	transition: ease 0.4s;
+
+}
+
+#issue_back_button{
+	margin-top: 1.5em;
+	border-bottom: solid thin;
+	height: 3.2rem;
+	display: flex;
+	justify-content: center;
+}
+
+#issue_back_button a {
+	font-size: 0.8em;
+	align-self: center;
+	height: max-content;
+	width: max-content;
+}
+
+
+/*My profile*/
+
+.my_profile_button{
+	padding-right: 0.5em;
+	padding-left: 0.5em;
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
+
+}
+
+.textbox{
+	margin-bottom: 0.3em!important;
+}
+
+
+/*My subscription*/
+
+#subscription_wrap_top{
+	margin-bottom: 2em;
+	margin-top: 2em;
+}
+
+#membership_wrap_bottom{
+	text-align: center;
+	margin-left: 1em;
+	margin-right: 1em;
+	margin-bottom: 2em;
+}
+
+#subscription_text{
+
+	margin-bottom: 1em;
+}
+
+/*My magazines*/
+
+#my_magazines_wrap{
+	margin-bottom: 2em;
+	margin-top: 2em;
+}
+
+
+/*Reset Password*/
+
+.basic_button{
+
+	font-size: 0.9em;
+    color: #fff;
+    background-color: rgb(47, 82, 224);
+	padding: .25em .5em;
+	text-decoration: none;
+	margin-top: 0.5em;
+
+
+
+}
+
+/*payment*/
+
+#payment_cancelled{
+	margin-right: 1em;
+	margin-left: 1em;
+	text-align: center;
+	margin-top: 2em;
+
+}

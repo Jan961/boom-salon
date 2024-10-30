@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="/static/styles/home.css">
+{% endblock %}
+
+{% block title %}
+{{this.title}}
+{% endblock %}
+
+<!--see navbar.html for navbar code-->
+{% block navbar %}
+{% include "navbar.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="container py-0 px-0 mr-0 d-inline">
+    <div class="row">
+        <div style="min-height: 80vh;" class="col-sm-4 pt-3 px-0">
+            {% include "sidebar.html" %}
+        </div>
+
+        <div class="col-sm-4 border-start border-end border-dark border-1 d-flex" id="mainbox">
+            <div class="info-box sticky-top mx-4 pe-4 d-flex">
+                <div class="issues mt-4">
+                    {% for issue in issues reversed %}
+                        <a href="{% url 'home:issue' this.id issue.slug %}" class="issue-crd card issue-link py-1">
+                            <img class="card-img-top" src="{{ issue.cover.url }}" />
+                            <div style=" display:flex; justify-content:center;" class="card-body">
+                                <h5 class="sml-txt card-title">Issue {{forloop.revcounter}}: {{issue.title}}</h5>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4 d-flex" id="mainbox">
+            <div class="info-box sticky-top px-4 py-4 d-flex">
+                About {{this.title}}
+
+                <div class="info sml-txt mt-3 d-inline">
+                    {{this.description_long}}
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+    if (window.location.href.slice(-10) != "#Magazines") {
+        window.location.href += "#Magazines";
+    }
+</script>
+
+<script src="{% static 'scripts/home.js' %}" defer></script>
+{% endblock %}	

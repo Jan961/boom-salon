@@ -1,0 +1,106 @@
+
+.nav-link {
+	color: #BCBCBC;
+	font-size: 18px !important;
+}
+
+.nav-link:hover {
+	color: #ffcf01;
+}
+
+.navbar {
+	height: auto;
+	background-color: #E8E5E2 !important;
+}
+
+.nav-col {
+	padding-bottom:5pt;
+}
+
+* {
+	border-radius: 0 !important;
+	font-family: 'ABCArizonaText-Regular-Trial';
+}
+
+.logo {
+	max-height: 100%;
+}
+
+h1 {
+	font-size: 36px;
+}
+
+.sml-txt {
+	font-size: 18px;
+}
+
+.xsml-txt {
+	font-size: 12px;
+}
+
+.gry-txt {
+	color: rgb(0 0 0 / 30%);
+}
+
+.card {
+	background-color: #E8E5E2 !important;
+}
+
+
+body {
+	font-size: 24px;
+	background-color: #E8E5E2;
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+
+@font-face {
+	font-family: 'ABCArizonaText-Regular-Trial';
+	src: local('ABCArizonaText-Regular-Trial.otf'), 
+		url('/static/fonts/ABCArizonaText-Regular-Trial.otf') format('truetype');
+}
+
+
+/**use this to edit css when using small screen ie mobile device*/
+
+@media only screen and (max-width: 470px) {
+	#sbar {
+		display: none !important;
+	}
+
+	#navbarDropdownMenuLink {
+		display: inline-flex !important;
+		border:none !important;
+	}
+
+	.top-links{
+		display:none !important;
+	}
+
+	.small-links{
+		text-align:center !important;
+	}
+}
+
+
+
+

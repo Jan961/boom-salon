@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends 'mobiletemplates/basemobile.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="/static/styles/home.css">
+{% endblock %}
+
+{% block title %}
+Payment Cancelled - mobile
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div id="payment_cancelled">
+    <div >
+        	<div>
+    <p>Payment was cancelled.</p>
+    <a class="basic_link" href="{% url 'home:home' %}"> Return to homepage.</a>
+    </div>
+    </div>
+    </div>
+
+{% endblock %}

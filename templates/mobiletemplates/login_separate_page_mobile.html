@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+{% extends 'mobiletemplates/basemobile.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="/static/styles/home.css">
+{% endblock %}
+
+{% block title %}
+Login separate page - mobile
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="basic_form">
+            <br>
+            <br>
+            <br>
+            <p>Please Log In</p>
+			<form id="login_form" method="post" action="{%url 'home:login' %}">
+				{% csrf_token %}
+
+
+            <input type="username" name="username" placeholder="Username" required /><br></br>
+            <input type="password" name="password" placeholder="Password" required/><br></br>
+
+             <div >
+            <input type="submit" value="Enter"/><br></br>
+            </div>
+
+
+			</form>
+            <a class = "sml-txt basic_link" href="{% url 'home:password_reset' %}">Forgot Password?</a>
+
+
+</div>
+
+
+{% endblock %}

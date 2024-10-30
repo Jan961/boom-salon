@@ -1,0 +1,121 @@
+{% extends 'mobiletemplates/basemobile.html' %}
+{% load static %}
+
+
+
+
+{% block title %}
+Home - Mobile
+{% endblock %}
+
+
+
+{% block content %}
+
+
+    <div id="aboutclo">
+        <p>
+            <h4>
+                About Cl&ograve
+            </h4>
+        </p>
+
+        <p>
+            lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat.
+            duis aute irure dolor in reprehenderit in voluptate
+            velit esse cillum dolore eu fugiat nulla pariatur. excepteur sint occaecat cupidatat non proident, sunt
+            in culpa qui officia deserunt mollit anim id est laborum.
+
+        </p>
+
+    </div>
+
+
+    <div class="menuwrapper">
+
+        <div class="menuelement">
+            <img class="closeicondummy" src="{% static 'icon/close.svg' %}"> {% comment %}This will not be visible -
+            inserted here for ease of styling with justify-content: space between of the menuelement - to ensure
+            that the "all magazine" text is always in the centre and the closeicon always close to the right edge of
+            the screen on devices of all dimension - a trick to compensate for the lack of justify-self css property
+            for justifying corresponding to align-self for aligning{% endcomment %}
+            <a > All Magazines </a>
+            <img class="closeicon" src="{% static 'icon/close.svg' %}">
+
+        </div>
+
+        <div class="hiddenpanel">
+            {% include "mobiletemplates/allmagazinesmobile.html" %}
+        </div>
+
+    {% if user.is_authenticated %}
+        <div class="menuelement" id="membership_authenticated">
+            <img class="closeicondummy" src="{% static 'icon/close.svg' %}">
+            <a> Membership </a>
+            <img class="closeicon" src="{% static 'icon/close.svg' %}">
+        </div>
+    {% else %}
+        <div class="menuelement" id="membership_not_authenticated">
+            <img class="closeicondummy" src="{% static 'icon/close.svg' %}">
+            <a> Membership </a>
+            <img class="closeicon" src="{% static 'icon/close.svg' %}">
+        </div>
+    {% endif %}
+
+        <div class="hiddenpanel" id="membership_outer_hidden_panel">
+            <p><a class="basic_link" href="{% url 'home:myprofile' %}">Go to Membership Menu</a></p>
+        </div>
+
+        <div class="menuelement">
+             <img class="closeicondummy" src="{% static 'icon/close.svg' %}">
+             <a> Contact </a>
+             <img class="closeicon" src="{% static 'icon/close.svg' %}">
+        </div>
+
+        <div class="hiddenpanel">
+            {% include "mobiletemplates/contactmobile.html" %}
+        </div>
+
+        <div id="login_element" class="menuelement">
+            {% if user.is_authenticated %}
+                    <img class="closeicondummy" src="{% static 'icon/close.svg' %}">
+                    <a>Sign Out</a>
+                    <img class="closeicon" src="{% static 'icon/close.svg' %}">
+            {% else %}
+                    <img class="closeicondummy" id="closelogin" src="{% static 'icon/close.svg' %}">
+                    <a>Log In</a>
+                    <img class="closeicon" src="{% static 'icon/close.svg' %}">
+            {% endif %}
+
+        </div>
+
+    {% if not user.is_authenticated %}
+        <div class="hiddenpanel">
+           {% include "mobiletemplates/loginmobile.html" %}
+        </div>
+    {% else %}
+        <div class="hiddenpanel">
+            <p>Are you sure you want to sign out?</p>
+            <p><a class="basic_link" href="{% url 'home:signout' %}">Yes</a></p>
+
+        </div>
+    {% endif %}
+
+    </div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+{% block script %}
+    <script src="{% static 'scripts/home.js' %}"></script>
+    <script src="{% static 'scripts/homemobile.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<div class="info-box py-0 px-0 mr-0 d-inline">
+			<div class="card-body center">
+
+			<center>
+			<h3 class="card-title">Log In</h3>
+
+			<div class="container sml-txt mt-3 d-inline">
+
+			<form id="login_form" method="post" action="{%url 'home:login' %}">
+				{% csrf_token %}
+
+
+
+				<input type="username" name="username" placeholder="Username" required /><br></br>
+				<input type="password" name="password" placeholder="Password" required/><br></br>
+				 </div>
+				 <div class="sml-txt">
+				<input type="submit" value="Enter"/><br>
+				</div>
+				<a class = "sml-txt" href="{% url 'home:password_reset' %}">Forgot Password?</a>
+
+
+			</form>
+			<div class="info sml-txt">
+
+				<div style="display: inline-block"><p>Don't have an account?</p></div>
+			<a href="{% url 'home:signup' %}">Sign Up</a>
+			</center>
+			</div>
+			</div>
+
+
+</div>

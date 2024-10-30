@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="/static/styles/home.css">
+{% endblock %}
+
+{% block title %}
+Email Verified
+{% endblock %}
+
+{% block navbar %}
+{% include "navbar.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+<!--Reset Password-->
+	<div class="container p-5">
+  	 	<h2 class="font-weight-bold mt-3">Email Verified</h2>
+		<hr>
+        <p>You have successfully verified your Clò email.</p>
+        <a href="{% url 'home:login' %}"> Login </a>
+
+  	</div>
+
+{% endblock %}

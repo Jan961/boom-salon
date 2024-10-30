@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="/static/styles/home.css">
+{% endblock %}
+
+{% block title %}
+{{this.title}}
+{% endblock %}
+
+<!--see navbar.html for navbar code-->
+{% block navbar %}
+{% include "navbar.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="container py-0 px-0 mr-0 d-inline">
+    <div class="row">
+        <div style="min-height: 80vh;" class="col-sm-4 pt-3 px-0">
+            {% include "sidebar.html" %}
+        </div>
+
+        <div class="col-sm-4 border-start border-end border-dark border-1 d-flex" id="mainbox">
+            <div class="info-box sticky-top mx-4 pe-4 d-flex">
+                <div class="issues mt-4">
+                    {% for issue in issues reversed %}
+                        {% if issue.slug == thisIssue.slug %}
+                        <a href="{% url 'home:magazine' this.id %}" class=" yellow issue-crd card issue-link py-1">
+                            <img class="card-img-top" src="{{ thisIssue.cover.url }}" />
+                            <div style=" display:flex; justify-content:center;" class="card-body">
+                                <h5 class="sml-txt card-title">Issue {{forloop.revcounter}}: {{issue.title}}</h5>
+                            </div>
+                        </a>
+                        {% else %}
+                        <a href="{% url 'home:issue' this.id issue.slug %}" class="issue-crd card issue-link py-1">
+                            <img class="card-img-top" src="{{ issue.cover.url }}" />
+                            <div style=" display:flex; justify-content:center;" class="card-body">
+                                <h5 class="sml-txt card-title">Issue {{forloop.revcounter}}: {{issue.title}}</h5>
+                            </div>
+                        </a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div style="margin:0; padding:0;" class="col-sm-4">
+            <div class="info-box issue-box sticky-top d-flex">
+                <div class="issue-header">
+                    <div>
+                        {{this.title}}<br />
+                        {{thisIssue.title}}<br />
+                        <div style="margin:0 !important;" class="sml-txt gry-txt">
+                            {% for hashtag in this.hashtag_set.all %}
+                            {{ hashtag }} &#160
+                            {% endfor %}
+                        </div>
+                        {% if user.is_authenticated %}
+                        <form class="save_issue" action="" method="POST" id="{{thisIssue.slug}}">
+                            {% csrf_token %}
+                            <button type="button" value="{{thisIssue.slug}}" class="btn btn-outline-secondary btn-sm favourite mt-2" onclick="saveIssue()">
+                                Add to My Magazines
+                            </button>
+                        </form>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="issue-body">
+                    <div class="sml-txt">
+                        {{thisIssue.issue_description}}
+                    </div>
+                </div>
+
+                <div class="issue-buy">
+                    <div>
+                        {% if subscribed %}
+                            <a href="{{this.link_to_publishers_site}}" onclick="alert('Please remember to use your subscriber discount code at the checkout!')" type="button" class="btn btn-primary btn-sm pay">Subscriber Price &#163 {{thisIssue.discounted_price}}</a>
+                            <a href="{{this.link_to_publishers_site}}" type="button" class="btn btn-outline-secondary btn-sm pay disabled"><strike>Full Price &#163 {{thisIssue.price}}</strike></a>
+                        {% else %}
+                            <a href="{% url 'home:membership' %}" type="button" class="btn btn-primary btn-sm pay">Subscriber Price &#163 {{thisIssue.discounted_price}}</a>
+                            <a href="{{this.link_to_publishers_site}}" type="button" class="btn btn-outline-secondary btn-sm pay">Full Price &#163 {{thisIssue.price}}</a>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block script %}
+<script>
+    if (window.location.href.slice(-10) != "#Magazines") {
+        window.location.href += "#Magazines";
+    }
+</script>
+
+<script>
+    var savedIss = []
+
+    {% for iss in saved_issues %}
+    savedIss.push("{{ iss.slug }}");
+    {% endfor %}
+</script>
+
+<script src="{% static 'scripts/home.js' %}" defer></script>
+<script src="{% static 'scripts/saveIssue.js' %}" defer></script>
+{% endblock %}

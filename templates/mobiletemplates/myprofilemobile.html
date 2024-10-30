@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load static %}
+{% load myfilter %}
+
+
+
+
+
+
+
+
+
+
+<div class="basic_form">
+
+
+
+                    <div class="container">
+                        <h3 style="display: inline-block">Email Address: </h3>
+                        <label>{{ request.user.email }}</label>
+                        {% if not curr_user.email_confirmed %}
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type='hidden' name='action' value='verify_email'>
+                            <input class="button my_profile_button" style="margin-top: 20px; width: 50%;" type="submit" name="Save" value="Re-send Verification Email" />
+                        </form>
+
+                        {% else %}
+                        <div style= "color:green" class="xsml-txt">Verified</div>
+                        {% endif %}
+
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type='hidden' name='action' value='edit_password'>
+                            <h3 style="margin-top: 70px; display: inline-block">Password:</h3>
+                            {{password_form.non_field_errors}}
+                            {% for field in password_form %}
+                            {{field.label_tag}}
+                            {{ field | addclass:'textbox'}}
+                            {% if field.errors %}
+                            <div style="color: red">
+                                {{ field.errors }}
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                            <input class="button my_profile_button" style=" margin-top: 20px; width: 50%;" type="submit" name="Save" value="Change Password" />
+                        </form>
+                        <ul class="messages" style="color:green; margin-top: 30px">
+                                {% for message in messages %}
+                                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                {% endfor %}
+                        </ul>
+
+
+                    </div>
+
+
+
+
+
+</div>

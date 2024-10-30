@@ -1,0 +1,10 @@
+{% autoescape off %}
+Hello,
+
+Please use the link below to confirm your email:
+
+{{ protocol }}://{{ domain }}{% url 'home:activate' uidb64=uid token=token %}
+
+The Clò Team
+
+{% endautoescape %}

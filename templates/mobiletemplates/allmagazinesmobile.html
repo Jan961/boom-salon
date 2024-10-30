@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<div id="allmagazineswrapper">
+
+
+      <div>
+          <input type="text" id="searchBar" onkeyup="searchBarFunction()" placeholder="search magazines or topics">
+      </div>
+     {% for magazine in magazines %}
+         <div class="mag_list_element_wrap">
+
+         <a class="magazine_or_issue_list_link" href="{% url 'home:magazine' magazine.id %}">
+
+            <div class="mag_list_element">
+                <img class="mag_list_cover_image" src="{{ magazine.mag_cover.url }}" />
+
+
+                <div class="mag_list_text all_mags">
+
+                       <span> {{ magazine.title }} </span>
+
+
+                    <div class="hashtags">
+                        {% for hashtag in magazine.hashtag_set.all %}
+                        <hashtag> {{ hashtag }}, &#160 </hashtag>
+                        {% endfor %}
+                    </div>
+                </div>
+
+
+
+            </div>
+          </a>
+            <div class="mag_list_line"></div>
+         </div>
+    {% endfor %}
+
+</div>
+
+<script src="{% static 'scripts/searchbarmobile.js' %}"></script>

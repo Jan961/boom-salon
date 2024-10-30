@@ -1,0 +1,48 @@
+/*form css*/
+
+.button{
+    color:white;
+    border:none;
+    padding: 5px 15px;
+    border-radius: 4px !important;
+    background:#4d79ff;
+}
+
+.button:hover{
+    color: white;
+    background-color: #99b3ff;
+    transition: background-color 0.5s ease
+}
+
+.textbox{
+    border-radius: 4px !important;
+    background-color: #E8E5E2;
+
+}
+
+/*form render css*/
+
+#content {
+    flex-direction:column;
+    
+}
+
+.info-box {
+    height: 85vh;
+    max-width: 95%;
+    width: 95%;
+    flex-direction: column;
+}
+
+.container{
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.container input{
+    width: 100%;
+}
+
+.basic_form label{
+    display: block;
+}

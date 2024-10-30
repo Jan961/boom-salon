@@ -1,0 +1,17 @@
+.saved-box {
+    min-height:80px;
+    margin-top:15px;
+    margin-bottom:5px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.saved-link{
+    text-decoration:none;
+    color:black;
+}
+
+.saved-link:hover {
+    color: #2F52E0
+}

@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+
+<link rel="stylesheet" type="text/css" href="/static/styles/home.css">
+<link rel="stylesheet" type="text/css" href="/static/styles/membership.css">
+
+{% endblock %}
+
+{% block title %}
+Membership
+{% endblock %}
+
+{% block navbar %}
+{% include "navbar.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container py-0 px-0 mr-0 d-inline">
+    <div class="row">
+    
+    	<div class="col-sm-4 pt-3 px-0 border-end border-dark border-1" style="min-height:80vh;">
+    		{% include "sidebar.html" %}
+    	</div>
+    	
+    	
+        <div class="col-sm-4 pt-3 px-4 pe-4 border-end border-dark border-1 d-flex" id="mainbox">
+        	<div style="margin-top:20px; margin-left:10px; margin-right:10px; margin-bottom:10px;" class="info-box">
+				<div class="pt-3  d-flex align-items-end">
+				{% if user.is_authenticated %}
+                    <div>Your Plan:</div>
+                {% elif subscribed == False %}
+                    <div>Upgrade:</div>
+				{% else %}
+					<div>Get a free account</div>
+                {% endif %}
+                </div>
+                	
+	  			<div class="container sml-txt mt-3 d-inline">
+	  				<p>Lorem ipsum dolor sit amet, consectetuer adipscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quiz nostrud exerci tation.</p>
+	  				<ul>
+	  				<li>Lorem ipsum dolor sit amet, consectetuer adipscing elit, sed diam nonummy nibh euismod tincidunt ut</li>
+	  				<li>Ut wisi enim ad minim veniam, quiz nostrud exerci tation.</li>
+	  				<li>Duis autem vel eum iriure dolor in hendererit in vuputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</li>
+	  				<li>Vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatun zzril delenit augue duis dolore te feugait nulla facilisi.</li>
+	  				</ul>
+	  				<br />
+	  				{% if user.is_authenticated %}
+	  					{% if subscribed == False %}
+	  				
+	  					{% if codes != 0 %}
+	  						{% if email_confirmed %}
+	  					
+	  					<center>
+	  					<div style="color:#2F52E0;">
+	  					<p>Subscribe using PayPal</p>
+	  					</div>
+
+{{ form.render }}
+
+	  					
+	  					</center>
+	  						{% else %}
+	  						<center>
+	  						<p> Please verify your email before subscribing.</p>
+	  						</center>
+	  						{% endif %}
+	  					{% else %}
+	  					<center>
+							<p> Try again next month. </p>
+						</center>
+						{% endif %}
+						
+						{% else %}
+						<h4>Subscription:</h4>
+						<div style="color: #2F52E0;bottom:0;left:30px;margin-top:30px;max-width:100%;overflow-x:hidden;">
+						
+				<p>Activated: {{ date_subscribed }} </p>
+				<p>Valid until: {{ date_valid }} </p>
+						</div>
+	  					{% endif %}
+	  						  				
+	  				
+	  				{% else %}
+	  					<center>
+	  					<a href="{% url 'home:signup' %}" class="btn btn-primary"> 
+	  					Sign up
+	  					</a>
+	  					</center>
+	  				{% endif %}
+	  	
+	  			</div>
+	  		</div>
+		</div>
+
+		{% if not subscribed  %}
+		
+		
+		<div class="col-sm-4 pt-3 px-4 pe-4 border-end border-dark border-1 d-flex" id="mainbox">
+		<div style="margin-top:400px; margin-left:10px; margin-right:10px; margin-bottom:10px;" class="info-box">
+		<center> 
+		<h3> {{ countdown }}</h3>
+		</center>
+		</div>
+		</div>
+		{% endif %}
+		
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+<script>
+	if (window.location.href.slice(-11) != "#Membership") {
+        window.location.href += "#Membership";
+    }
+	
+</script>	
+
+{% endblock %}

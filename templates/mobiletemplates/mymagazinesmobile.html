@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<div id="my_magazines_wrap">
+                {% if savedissues %}
+                {% for issue in savedissues %}
+                <div class="saved-box">
+                    <a href="{% url 'home:issue' issue.magazine.id issue.slug %}" class="saved-link basic_link">
+                        {{issue.magazine.title}} - {{issue.title}}
+                    </a>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="saved-box">
+                    You haven't saved any magazines yet!
+                </div>
+                {% endif %}
+
+
+</div>
